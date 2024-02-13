@@ -49,6 +49,32 @@ final class TaskListViewController: UITableViewController {
         present(alert, animated: true)
     }
     
+    private func showAlertEdit(withTitle title: String, andMessage message: String, tf: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] _ in
+            guard let taskName = alert.textFields?.first?.text, !taskName.isEmpty else { return }
+            edit(taskName)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        alert.addTextField { textField in
+            textField.placeholder = "New Task"
+            textField.text = tf
+        }
+        present(alert, animated: true)
+    }
+    
+    private func edit(_ taskName: String) {
+        guard let taskIndex = tableView.indexPathForSelectedRow else { return }
+                
+        taskList[taskIndex.row].title = taskName
+        
+        storageManager.saveContext()
+        
+        tableView.reloadData()
+    }
+    
     private func save(_ taskName: String) {
         let task = ToDoTask(context: storageManager.persistentContainer.viewContext)
         task.title = taskName
@@ -74,6 +100,13 @@ extension TaskListViewController {
         content.text = toDoTask.title
         cell.contentConfiguration = content
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let task = taskList[indexPath.row]
+
+        showAlertEdit(withTitle: "Edit Task", andMessage: "make changes", tf: task.title ?? "")
+        
     }
 }
 
