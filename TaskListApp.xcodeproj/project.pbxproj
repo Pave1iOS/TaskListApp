@@ -78,8 +78,8 @@
 		4667FE3B2B7BBFBA00BA94B2 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				A8F9D4D92B79350400B80334 /* TaskListApp.xcdatamodeld */,
 				4667FE3C2B7BBFEB00BA94B2 /* StorageManager.swift */,
+				A8F9D4D92B79350400B80334 /* TaskListApp.xcdatamodeld */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -103,11 +103,11 @@
 		A8F9D4CF2B79350400B80334 /* TaskListApp */ = {
 			isa = PBXGroup;
 			children = (
-				4667FE382B7BBF6100BA94B2 /* App */,
 				4667FE372B7BBF4800BA94B2 /* ViewControllers */,
-				4667FE392B7BBF6C00BA94B2 /* Factories */,
-				4667FE3A2B7BBFAB00BA94B2 /* Storyboards */,
 				4667FE3B2B7BBFBA00BA94B2 /* Storage */,
+				4667FE3A2B7BBFAB00BA94B2 /* Storyboards */,
+				4667FE392B7BBF6C00BA94B2 /* Factories */,
+				4667FE382B7BBF6100BA94B2 /* App */,
 				A8F9D4DC2B79350600B80334 /* Assets.xcassets */,
 			);
 			path = TaskListApp;
