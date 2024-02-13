@@ -103,6 +103,10 @@ extension TaskListViewController {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let taskContext = storageManager.persistentContainer.viewContext
+        let task = taskList[indexPath.row]
+        
+        taskContext.delete(task)
         taskList.remove(at: indexPath.row)
         
         storageManager.saveContext()
