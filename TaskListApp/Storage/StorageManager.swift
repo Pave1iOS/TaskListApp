@@ -11,7 +11,6 @@ import CoreData
 class StorageManager {
     static let shared = StorageManager()
     
-    // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "TaskListApp")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -22,7 +21,6 @@ class StorageManager {
         return container
     }()
 
-    // MARK: - Core Data Saving support
     func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {

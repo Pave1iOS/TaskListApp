@@ -21,7 +21,7 @@ final class TaskListViewController: UITableViewController {
     }
     
     @objc private func addNewTask() {
-        showAlert(withTitle: "New Task", andMessage: "What do you want to do&")
+        showAlert(withTitle: "New Task", andMessage: "What do you want to do?")
     }
     
     private func fetchData() {
@@ -65,7 +65,6 @@ final class TaskListViewController: UITableViewController {
         taskList[taskIndex.row].title = taskName
         
         storageManager.saveContext()
-        
         tableView.reloadData()
     }
     
