@@ -106,7 +106,13 @@ extension TaskListViewController {
         let task = taskList[indexPath.row]
 
         showAlertEdit(withTitle: "Edit Task", andMessage: "make changes", tf: task.title ?? "")
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        taskList.remove(at: indexPath.row)
         
+        storageManager.saveContext()
+        tableView.reloadData()
     }
 }
 
