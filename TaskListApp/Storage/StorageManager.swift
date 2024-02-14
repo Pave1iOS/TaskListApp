@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class StorageManager {
+final class StorageManager {
     static let shared = StorageManager()
     
     lazy var persistentContainer: NSPersistentContainer = {
